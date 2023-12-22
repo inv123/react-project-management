@@ -1,23 +1,25 @@
 import React from "react";
 import { Button } from "../Button";
+import { useRef } from "react";
+import { Input } from "../Input";
 
-export const AddProject = ({hideAddProject}) => {
+export const AddProject = ({hideAddProject, addProject}) => {
+    const title = useRef(null);
+    const description = useRef(null);
+    const dueDate = useRef(null);
+
+    
   return (
     <>
       <div className="block">
         <div className="flex flex-nowrap justify-end w-full mb-8">
             <Button type='secondary' content='Cancel' clickHandler={hideAddProject}/>
-            <Button type='primary' content='Save'/>
+            <Button type='primary' content='Save' clickHandler={() => addProject(title.current.value, description.current.value, dueDate.current.value)}/>
         </div>
         <div class="flex-none ">
-            <label className="block mb-2 uppercase">title</label>
-            <input className="block bg-gray-100 h-10 border-b-2 border-gray-300 border-solid w-full focus:border-gray-500 px-4 focus-visible:outline-none mb-8 py-2"/>
-
-            <label className="block mb-2 uppercase">description</label>
-            <textarea className="block bg-gray-100 h-24 border-b-2 border-gray-300 border-solid w-full focus:border-gray-500 pl-4 focus-visible:outline-none mb-8 py-2" />
-
-            <label className="block mb-2 uppercase">due date</label>
-            <input className="block bg-gray-100 h-10 border-b-2 border-gray-300 border-solid w-full focus:border-gray-500 px-4 focus-visible:outline-none mb-8 py-2" type="date"/>
+            <Input label='title' input='input' type='text'  ref={title}/>
+            <Input label='description' input='textarea'  ref={description}/>
+            <Input label='due date' input='input' type='date'  ref={dueDate}/>
         </div>
       </div>
     </>
