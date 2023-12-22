@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "../Button";
 
-export const LeftSide = () => {
+export const LeftSide = ({showAddProject, hideAddProject}) => {
   return (
     <>
       <h1 className="text-3xl uppercase mb-8">Project App</h1>
-      <Button content="+ Add Project"/>
+      <Button content="+ Add Project" clickHandler={showAddProject}/>
       <div>
         {/* <ul>
           <li>Project 1</li>

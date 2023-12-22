@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "../Button";
 
-export const AddProject = () => {
+export const AddProject = ({hideAddProject}) => {
   return (
     <>
-      <div class="block">
-        <div class="flex flex-nowrap justify-end w-full mb-8">
-            <Button type='secondary' content='Cancel'/>
+      <div className="block">
+        <div className="flex flex-nowrap justify-end w-full mb-8">
+            <Button type='secondary' content='Cancel' clickHandler={hideAddProject}/>
             <Button type='primary' content='Save'/>
         </div>
         <div class="flex-none ">
