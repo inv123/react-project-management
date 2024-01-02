@@ -18,18 +18,22 @@ export const ProjectDetails = ({title, description, dueDate, tasks, deleteProjec
       <h2 className="mb-6 text-2xl">Tasks</h2>
       <div className="flex gap-3 mb-6 text-small">
         <Input taskInput={true} input='input' type='text' ref={taskRef}/>
-        <Button type={"green"} content={'Add Task'} clickHandler={addTask}/>
+        <Button type={"green"} content={'Add Task'} clickHandler={() => addTask(taskRef.current.value)}/>
       </div>
-      {tasks.length === 0 
-      ? <p>No projects yet.</p> 
-      : tasks.map(task => {
-        <div className="bg-slate-200 block">
-            <div className="flex">
-                <p>task</p>
-                <Button type={'red'} content={'Clear'} clickHandler={deleteTask}/>
+      {tasks.length === 0 && <p>No projects yet.</p> }
+        <ul>
+        {tasks.map((task, index) => (
+        <li key={index}>
+            <div className="bg-slate-200 block mb-8" >
+            <div className="flex" >
+                <p className="grow my-auto pl-6">{task.taskname}</p>
+                <Button type={'red'} content={'Clear'} clickHandler={() => deleteTask(index)}/>
             </div>
         </div>
-      })}
+        </li>
+      ))}
+        </ul>
+      
       
     </div>
   );

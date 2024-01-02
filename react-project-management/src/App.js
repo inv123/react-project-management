@@ -58,6 +58,22 @@ function App() {
   
   }
 
+  function addTaskHandler(taskname){
+    setProjects(prevProjects => {
+      const updatedProjects = [...prevProjects];
+      updatedProjects.filter(x => x.showDetails === true)[0].tasks.push({taskname})
+      return updatedProjects
+    })
+  }
+
+  function deleteTaskHandler(id){
+    setProjects(prevProjects => {
+      const updatedProjects = [...prevProjects];
+      updatedProjects.filter(x => x.showDetails === true)[0].tasks.splice(id, 1);
+      return updatedProjects
+    })
+  }
+
   return (
     <>
       <div className="flex">
@@ -68,7 +84,7 @@ function App() {
 
         <div className="grow h-screen py-16 pl-8 pr-24">
           {isProjectAdding && <AddProject hideAddProject={cancelProjectHandler} addProject={addProjectHandler}/>}
-          {showProjectDetails && <ProjectDetails  title={projects.filter(x => x.showDetails === true)[0].title} description={projects.filter(x => x.showDetails === true)[0].description} dueDate={projects.filter(x => x.showDetails === true)[0].dueDate} tasks={projects.filter(x => x.showDetails === true)[0].tasks} deleteProject={deleteProjectHandler}/> }
+          {showProjectDetails && <ProjectDetails  title={projects.filter(x => x.showDetails === true)[0].title} description={projects.filter(x => x.showDetails === true)[0].description} dueDate={projects.filter(x => x.showDetails === true)[0].dueDate} tasks={projects.filter(x => x.showDetails === true)[0].tasks} deleteProject={deleteProjectHandler} addTask={addTaskHandler} deleteTask={deleteTaskHandler}/> }
           
         </div>
       </div>

@@ -535,6 +535,11 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -730,6 +735,10 @@ video {
 
 .pr-24 {
   padding-right: 6rem;
+}
+
+.pl-6 {
+  padding-left: 1.5rem;
 }
 
 .text-3xl {
