@@ -44,6 +44,20 @@ function App() {
     setShowProjectDetails(true);
   }
 
+  function deleteProjectHandler(){
+    setProjects(prevProjects => {
+      const updatedProjects = [...prevProjects];
+      const currentIndex = updatedProjects.map(x => x.showDetails).indexOf(true);
+
+      updatedProjects.splice(currentIndex, 1);
+
+      return updatedProjects
+    })
+    setIsProjectAdding(false);
+    setShowProjectDetails(false);
+  
+  }
+
   return (
     <>
       <div className="flex">
@@ -54,7 +68,7 @@ function App() {
 
         <div className="grow h-screen py-16 pl-8 pr-24">
           {isProjectAdding && <AddProject hideAddProject={cancelProjectHandler} addProject={addProjectHandler}/>}
-          {showProjectDetails && <ProjectDetails title={projects.filter(x => x.showDetails === true)[0].title} description={projects.filter(x => x.showDetails === true)[0].description} dueDate={projects.filter(x => x.showDetails === true)[0].dueDate}/> }
+          {showProjectDetails && <ProjectDetails  title={projects.filter(x => x.showDetails === true)[0].title} description={projects.filter(x => x.showDetails === true)[0].description} dueDate={projects.filter(x => x.showDetails === true)[0].dueDate} tasks={projects.filter(x => x.showDetails === true)[0].tasks} deleteProject={deleteProjectHandler}/> }
           
         </div>
       </div>

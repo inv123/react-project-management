@@ -22,7 +22,7 @@ export const AddProject = ({hideAddProject, addProject}) => {
             <Button type='primary' content='Save' clickHandler={handleAddProject}/>
         </div>
         <div className="flex-none ">
-            <Input label='title' input='input' type='text'  ref={title}/>
+            <Input label='title' input='input' type='text' ref={title}/>
             <Input label='description' input='textarea'  ref={description}/>
             <Input label='due date' input='input' type='date'  ref={dueDate}/>
         </div>
